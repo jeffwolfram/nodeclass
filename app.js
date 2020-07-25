@@ -1,15 +1,20 @@
 const http = require('http');
 
+const adminRoutes = require('./routes/admin');
+
+const shopRoutes = require('./routes/shop');
+
 const express = require('express');
 
 const app = express();
 
-app.use('/users',(req, res, next) => {
-    res.send('<h1>This page is for Users</h1>')
-});
-app.use('/',(req, res, next) => {
-    res.send('<h1>This is the front page for my express page</h1>')
-});
+const bodyParser = require('body-parser');
+
+app.use(adminRoutes);
+app.use(shopRoutes);
+
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 const server = http.createServer(app);
 
