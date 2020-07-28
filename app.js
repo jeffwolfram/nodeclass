@@ -6,6 +6,10 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
+app.set('view engine', 'pug');
+app.set('views', 'views'); //This is not really needed.It is only needed if I were to put my html files in a folder other than views
+
+
 const adminData = require('./routes/admin');
 
 const shopRoutes = require('./routes/shop');
