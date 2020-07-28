@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 
-app.set('view engine', 'pug');
+app.set('view engine', 'ejs');
 app.set('views', 'views'); //This is not really needed.It is only needed if I were to put my html files in a folder other than views
 
 
@@ -22,7 +22,7 @@ app.use('/admin', adminData.routes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-    res.status(404).render('404', {pageTitle: '404 Page not found!'})
+    res.status(404).render('404', { pageTitle: '404 Page not found!', path: ''})
 });
 
 app.listen(3000);
