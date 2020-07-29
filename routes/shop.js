@@ -3,17 +3,12 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../util/path');
-
-const adminData = require('./admin');
+const productsController = require('../controllers/products');
 
 const router = express.Router();
 
 // rootDir was created in util/path.js  and is created at top of page in const rootdir
-router.get('/', (req, res, next) => {
-  const products = adminData.products;
-  res.render('shop', { prods: products, pageTitle: 'My Shop', path: '/'});
-});
+router.get('/', productsController.getProducts );
 
 
 module.exports = router;
